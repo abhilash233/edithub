@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EditHub — Find your editing software</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0a0b10;color:#f5f5f7;line-height:1.5}
+a{text-decoration:none;color:inherit}
+.nav{height:72px;border-bottom:1px solid #242631;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;background:rgba(10,11,16,.9);backdrop-filter:blur(18px);z-index:10}
+.logo{font-size:22px;font-weight:800;letter-spacing:-.8px}.logo span{color:#8b7cff}
+.navlinks{display:flex;gap:25px;color:#aeb1bf;font-size:14px}.navlinks a:hover{color:white}
+.hero{padding:88px 6% 60px;text-align:center;max-width:1050px;margin:auto}
+.badge{display:inline-block;padding:7px 12px;border:1px solid #303342;border-radius:999px;color:#bdb9ff;background:#141321;font-size:12px;margin-bottom:20px}
+h1{font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-4px;max-width:850px;margin:auto}
+.grad{background:linear-gradient(90deg,#fff,#aaa4ff,#7ee7ff);-webkit-background-clip:text;color:transparent}
+.hero p{color:#9da1b1;max-width:650px;margin:24px auto;font-size:17px}
+.search{max-width:700px;margin:30px auto 0;position:relative}
+.search input{width:100%;background:#12141b;border:1px solid #30333f;border-radius:14px;padding:17px 20px;color:white;font-size:15px;outline:none}
+.search input:focus{border-color:#7770e9}
+.filters{padding:0 6% 25px;display:flex;gap:9px;flex-wrap:wrap;max-width:1250px;margin:auto}
+.filter{border:1px solid #2c2f3a;background:#11131a;color:#bfc2ce;border-radius:999px;padding:9px 15px;cursor:pointer;font-size:13px}
+.filter.active,.filter:hover{background:#766cf0;color:white;border-color:#766cf0}
+main{max-width:1250px;margin:auto;padding:20px 6% 80px}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:35px 0 16px}
+.sectionhead h2{font-size:25px;letter-spacing:-1px}.count{color:#858998;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:#11131a;border:1px solid #272a35;border-radius:18px;padding:20px;transition:.2s;display:flex;flex-direction:column;min-height:265px}
+.card:hover{transform:translateY(-3px);border-color:#4b4f61;background:#141620}
+.icon{width:44px;height:44px;border-radius:12px;background:#20232e;display:grid;place-items:center;font-size:21px;margin-bottom:14px}
+.card h3{font-size:18px}.type{font-size:12px;color:#8e91a0;margin:3px 0 10px}
+.card p{font-size:13px;color:#a6a9b6;min-height:40px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+.tag{font-size:10px;padding:5px 8px;background:#1b1e27;border-radius:6px;color:#bfc2cd}
+.rating{font-size:12px;color:#c4c0ff}.buttons{display:flex;gap:8px;margin-top:auto}
+.btn{flex:1;text-align:center;padding:9px;border-radius:9px;background:#756cf0;font-size:12px;font-weight:700}
+.btn.secondary{background:#20232c;color:#cdd0da}
+.empty{padding:40px;text-align:center;color:#858998;display:none;grid-column:1/-1}
+.footer{border-top:1px solid #242631;text-align:center;padding:35px 6%;color:#777b89;font-size:12px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}h1{letter-spacing:-2px}.hero{padding-top:60px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="#">Edit<span>Hub</span></a>
+  <div class="navlinks"><a href="#software">Software</a><a href="#categories">Categories</a><a href="#about">About</a></div>
+</nav>
+
+<section class="hero">
+  <div class="badge">THE EDITING SOFTWARE DIRECTORY</div>
+  <h1>Find the right tool for <span class="grad">your next edit.</span></h1>
+  <p>Explore editing software by what it actually does best — video, colour, VFX, photos, 3D, audio and more.</p>
+  <div class="search"><input id="search" placeholder="Search software or what you want to do..."></div>
+</section>
+
+<div class="filters" id="categories">
+  <button class="filter active" data-filter="all">All</button>
+  <button class="filter" data-filter="video">🎬 Video</button>
+  <button class="filter" data-filter="color">🎨 Colour</button>
+  <button class="filter" data-filter="vfx">✨ VFX</button>
+  <button class="filter" data-filter="photo">🖼️ Photo</button>
+  <button class="filter" data-filter="3d">🧊 3D</button>
+  <button class="filter" data-filter="audio">🎵 Audio</button>
+  <button class="filter" data-filter="social">📱 Social</button>
+</div>
+
+<main id="software">
+  <div class="sectionhead"><h2>Explore software</h2><div class="count" id="count"></div></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="footer" id="about">EditHub is a directory concept. Software names and trademarks belong to their respective owners.</footer>
+
+<script>
+const apps=[
+{name:"DaVinci Resolve",icon:"🎞️",type:"Video • Colour • VFX • Audio",desc:"A professional all-in-one editor with especially strong colour grading and finishing tools.",cats:["video","color","vfx","audio"],tags:["Professional","Free version","Desktop"],rating:"★★★★★  5.0",url:"https://www.blackmagicdesign.com/products/davinciresolve/"},
+{name:"Adobe Premiere Pro",icon:"▶️",type:"Video Editing",desc:"A professional timeline editor for cutting, effects, audio, captions and complete video projects.",cats:["video"],tags:["Professional","AI tools","Desktop"],rating:"★★★★★  4.8",url:"https://www.adobe.com/products/premiere.html"},
+{name:"Final Cut Pro",icon:"🎬",type:"Video • Colour • Audio",desc:"Apple's professional video editor for Mac and iPad, with editing, audio, motion and colour tools.",cats:["video","color","audio"],tags:["Mac / iPad","Professional"],rating:"★★★★★  4.8",url:"https://www.apple.com/final-cut-pro/"},
+{name:"CapCut",icon:"✂️",type:"Video • Photo • Social",desc:"A quick editor focused on creating videos and visual content for social platforms.",cats:["video","photo","social"],tags:["Easy","Social","AI tools"],rating:"★★★★☆  4.5",url:"https://www.capcut.com/"},
+{name:"Adobe Photoshop",icon:"Ps",type:"Photo • Design",desc:"Advanced image editing, compositing, retouching and creative design with AI-powered tools.",cats:["photo"],tags:["Professional","AI tools","Desktop / Web"],rating:"★★★★★  4.9",url:"https://www.adobe.com/products/photoshop.html"},
+{name:"Blender",icon:"🌀",type:"3D • Animation • VFX",desc:"Free, open-source 3D software for modelling, animation, simulation, rendering and more.",cats:["3d","vfx"],tags:["Free","Open Source","3D"],rating:"★★★★★  4.9",url:"https://www.blender.org/"},
+{name:"Canva",icon:"C",type:"Design • Photo • Video • Social",desc:"An accessible visual design platform for social posts, videos, presentations, graphics and more.",cats:["photo","video","social"],tags:["Easy","Free plan","Web"],rating:"★★★★☆  4.5",url:"https://www.canva.com/"},
+{name:"Audacity",icon:"🎙️",type:"Audio Editing",desc:"Free, open-source software for recording and editing audio.",cats:["audio"],tags:["Free","Open Source","Desktop"],rating:"★★★★☆  4.4",url:"https://www.audacityteam.org/"},
+{name:"Adobe After Effects",icon:"Ae",type:"Motion Graphics • VFX",desc:"A professional tool for motion graphics, compositing, animation and visual effects.",cats:["vfx"],tags:["Professional","Motion","Desktop"],rating:"★★★★★  4.8",url:"https://www.adobe.com/products/aftereffects.html"}
+];
+
+const grid=document.getElementById("grid"), search=document.getElementById("search"), count=document.getElementById("count");
+let active="all";
+function render(){
+ const q=search.value.toLowerCase();
+ const shown=apps.filter(a=>(active==="all"||a.cats.includes(active)) && (a.name.toLowerCase().includes(q)||a.type.toLowerCase().includes(q)||a.desc.toLowerCase().includes(q)||a.tags.join(" ").toLowerCase().includes(q)));
+ count.textContent=shown.length+" tools";
+ grid.innerHTML=shown.length?shown.map(a=>`
+ <article class="card">
+  <div class="icon">${a.icon}</div><h3>${a.name}</h3><div class="type">${a.type}</div><p>${a.desc}</p>
+  <div class="tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+  <div class="rating">${a.rating}</div>
+  <div class="buttons"><a class="btn" href="${a.url}" target="_blank" rel="noopener">Official site ↗</a></div>
+ </article>`).join(""):`<div class="empty" style="display:block">No software found. Try another search or category.</div>`;
+}
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");active=b.dataset.filter;render()});
+search.oninput=render; render();
+</script>
+</body>
+</html>
