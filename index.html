@@ -3,105 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EditHub — Find your editing software</title>
+<meta name="description" content="EditHub — find the best editing software for video, colour, VFX, photo, 3D, audio and social content.">
+<title>EditHub — Editing Software Finder</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0a0b10;color:#f5f5f7;line-height:1.5}
+:root{--bg:#07080d;--panel:#10121a;--panel2:#151823;--border:#292d3a;--text:#f5f7ff;--muted:#9da3b5;--accent:#8b7cff;--accent2:#63d8ff;--good:#74e0a0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 50% -10%,#20203b 0,#0b0c12 35%,var(--bg) 70%);color:var(--text);line-height:1.5;min-height:100vh}
 a{text-decoration:none;color:inherit}
-.nav{height:72px;border-bottom:1px solid #242631;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;background:rgba(10,11,16,.9);backdrop-filter:blur(18px);z-index:10}
-.logo{font-size:22px;font-weight:800;letter-spacing:-.8px}.logo span{color:#8b7cff}
-.navlinks{display:flex;gap:25px;color:#aeb1bf;font-size:14px}.navlinks a:hover{color:white}
-.hero{padding:88px 6% 60px;text-align:center;max-width:1050px;margin:auto}
-.badge{display:inline-block;padding:7px 12px;border:1px solid #303342;border-radius:999px;color:#bdb9ff;background:#141321;font-size:12px;margin-bottom:20px}
-h1{font-size:clamp(42px,7vw,76px);line-height:.98;letter-spacing:-4px;max-width:850px;margin:auto}
-.grad{background:linear-gradient(90deg,#fff,#aaa4ff,#7ee7ff);-webkit-background-clip:text;color:transparent}
-.hero p{color:#9da1b1;max-width:650px;margin:24px auto;font-size:17px}
-.search{max-width:700px;margin:30px auto 0;position:relative}
-.search input{width:100%;background:#12141b;border:1px solid #30333f;border-radius:14px;padding:17px 20px;color:white;font-size:15px;outline:none}
-.search input:focus{border-color:#7770e9}
-.filters{padding:0 6% 25px;display:flex;gap:9px;flex-wrap:wrap;max-width:1250px;margin:auto}
-.filter{border:1px solid #2c2f3a;background:#11131a;color:#bfc2ce;border-radius:999px;padding:9px 15px;cursor:pointer;font-size:13px}
-.filter.active,.filter:hover{background:#766cf0;color:white;border-color:#766cf0}
-main{max-width:1250px;margin:auto;padding:20px 6% 80px}
-.sectionhead{display:flex;justify-content:space-between;align-items:end;margin:35px 0 16px}
-.sectionhead h2{font-size:25px;letter-spacing:-1px}.count{color:#858998;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.card{background:#11131a;border:1px solid #272a35;border-radius:18px;padding:20px;transition:.2s;display:flex;flex-direction:column;min-height:265px}
-.card:hover{transform:translateY(-3px);border-color:#4b4f61;background:#141620}
-.icon{width:44px;height:44px;border-radius:12px;background:#20232e;display:grid;place-items:center;font-size:21px;margin-bottom:14px}
-.card h3{font-size:18px}.type{font-size:12px;color:#8e91a0;margin:3px 0 10px}
-.card p{font-size:13px;color:#a6a9b6;min-height:40px}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
-.tag{font-size:10px;padding:5px 8px;background:#1b1e27;border-radius:6px;color:#bfc2cd}
-.rating{font-size:12px;color:#c4c0ff}.buttons{display:flex;gap:8px;margin-top:auto}
-.btn{flex:1;text-align:center;padding:9px;border-radius:9px;background:#756cf0;font-size:12px;font-weight:700}
-.btn.secondary{background:#20232c;color:#cdd0da}
-.empty{padding:40px;text-align:center;color:#858998;display:none;grid-column:1/-1}
-.footer{border-top:1px solid #242631;text-align:center;padding:35px 6%;color:#777b89;font-size:12px}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}h1{letter-spacing:-2px}.hero{padding-top:60px}}
+button,input,select,textarea{font:inherit}
+.nav{height:72px;border-bottom:1px solid #242735;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;background:rgba(7,8,13,.82);backdrop-filter:blur(18px);z-index:20}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:25px;color:#aeb3c4;font-size:14px}.navlinks a:hover{color:#fff}
+.hero{padding:82px 5% 48px;text-align:center;max-width:1120px;margin:auto;animation:rise .65s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border:1px solid #37324e;border-radius:999px;color:#c7c1ff;background:#151321;font-size:11px;font-weight:800;letter-spacing:.8px;margin-bottom:20px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2)}
+h1{font-size:clamp(43px,7vw,78px);line-height:.98;letter-spacing:-4px;max-width:900px;margin:auto}.grad{background:linear-gradient(90deg,#fff,#aaa4ff,#73dcff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#a3a8b8;max-width:690px;margin:23px auto;font-size:17px}
+.ai-box{max-width:790px;margin:28px auto 0;text-align:left;background:linear-gradient(135deg,rgba(139,124,255,.12),rgba(99,216,255,.06));border:1px solid #393550;border-radius:20px;padding:17px;box-shadow:0 15px 50px rgba(0,0,0,.22)}
+.ai-title{font-size:13px;font-weight:900;letter-spacing:.6px;margin:0 0 9px;color:#d8d4ff}.ai-title span{color:var(--accent2)}
+.ai-box textarea{width:100%;height:82px;resize:none;background:#0d0f16;border:1px solid #303443;border-radius:12px;padding:13px;color:#fff;outline:none}.ai-box textarea:focus{border-color:var(--accent)}
+.ai-row{display:flex;gap:9px;margin-top:10px}.primary,.secondary{border:0;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:800}.primary{background:linear-gradient(90deg,#786cf0,#5fcce9);color:white}.secondary{background:#202330;color:#cbd0df}.examples{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.example{border:1px solid #303443;background:#11141c;color:#aeb4c6;border-radius:999px;padding:6px 9px;font-size:11px;cursor:pointer}.example:hover{border-color:#655db1;color:white}
+.ai-results{display:none;margin-top:13px;border-top:1px solid #2d3040;padding-top:13px}.ai-results.show{display:block}.ai-result{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #242734}.ai-result:last-child{border:0}.ai-icon{width:39px;height:39px;border-radius:10px;background:#1d202b;display:grid;place-items:center;flex:none}.ai-info{flex:1}.ai-info b{font-size:14px}.ai-info small{display:block;color:#9298aa}.match{font-size:12px;color:var(--good);font-weight:800}.mini-link{font-size:11px;color:#bbb5ff}
+.filters-wrap{max-width:1300px;margin:auto;padding:0 5% 14px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid #2c303d;background:#10131a;color:#bfc4d2;border-radius:999px;padding:8px 13px;cursor:pointer;font-size:12px}.filter.active,.filter:hover{background:#766cf0;color:#fff;border-color:#766cf0}
+main{max-width:1300px;margin:auto;padding:18px 5% 75px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:25px 0 16px}.sectionhead h2{font-size:25px;letter-spacing:-1px}.count{color:#858b9d;font-size:13px}.controls{display:flex;gap:8px;align-items:center}.select{background:#11141b;border:1px solid #2c303c;color:#cbd0dc;border-radius:9px;padding:8px 10px;font-size:12px;outline:none}.compare-btn{display:none;background:#27233e;border:1px solid #50478a;color:#d8d4ff;border-radius:9px;padding:8px 11px;font-size:12px;cursor:pointer}.compare-btn.show{display:block}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:linear-gradient(180deg,#12151d,#0e1016);border:1px solid #272b37;border-radius:18px;padding:19px;transition:.22s;display:flex;flex-direction:column;min-height:300px;position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0,rgba(139,124,255,.1),transparent 38%);opacity:0;transition:.2s}.card:hover{transform:translateY(-5px);border-color:#454b60;box-shadow:0 18px 45px rgba(0,0,0,.24)}.card:hover:before{opacity:1}.card>*{position:relative}.icon{width:46px;height:46px;border-radius:12px;background:#20232d;display:grid;place-items:center;font-size:20px;margin-bottom:13px;font-weight:900}.card h3{font-size:18px}.type{font-size:11px;color:#858b9d;margin:3px 0 10px}.card p{font-size:13px;color:#a7acba;min-height:41px}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:13px 0}.tag{font-size:10px;padding:5px 8px;background:#1b1e27;border-radius:6px;color:#c0c5d2}.rating{font-size:12px;color:#c8c3ff;margin-bottom:11px}.rating-num{color:#9da3b4;margin-left:5px}.card-actions{display:flex;gap:7px;margin-top:auto}.btn{flex:1;text-align:center;padding:9px;border-radius:9px;background:#756cf0;font-size:12px;font-weight:800;cursor:pointer}.btn.secondary{background:#20232c;color:#cdd1dd}.check{width:38px;border:1px solid #303441;background:#171a22;color:#9da4b7;border-radius:9px;cursor:pointer}.check.selected{background:#312b59;color:#e4e0ff;border-color:#6d61bf}.empty{padding:45px;text-align:center;color:#858998;grid-column:1/-1;background:#10121a;border:1px dashed #303442;border-radius:15px}
+.about{margin-top:50px;padding:25px;border:1px solid #292d39;border-radius:16px;background:#0f1118;color:#9da3b4;font-size:13px}.about strong{color:#e9ebf4}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;z-index:40}.modal.open{display:flex}.modal-card{width:min(900px,100%);max-height:90vh;overflow:auto;background:#10131b;border:1px solid #343948;border-radius:20px;padding:22px}.modal-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:18px}.close{border:0;background:#20232c;color:#fff;border-radius:9px;padding:7px 11px;cursor:pointer}.compare-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.compare-item{background:#171a23;border:1px solid #292e3b;border-radius:13px;padding:14px}.compare-item h3{margin-bottom:6px}.compare-item p{font-size:12px;color:#9da3b3}.compare-stat{display:flex;justify-content:space-between;border-top:1px solid #292e39;padding-top:7px;margin-top:9px;font-size:12px}.footer{border-top:1px solid #242631;text-align:center;padding:30px 5%;color:#777d8d;font-size:11px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+@media(max-width:600px){.grid,.compare-grid{grid-template-columns:1fr}h1{letter-spacing:-2.5px}.hero{padding-top:62px}.toolbar{align-items:flex-start;flex-direction:column}.controls{width:100%}.select{flex:1}.ai-row{flex-direction:column}.ai-box{padding:14px}}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <a class="logo" href="#">Edit<span>Hub</span></a>
-  <div class="navlinks"><a href="#software">Software</a><a href="#categories">Categories</a><a href="#about">About</a></div>
-</nav>
-
+<nav class="nav"><a class="logo" href="#">Edit<span>Hub</span></a><div class="navlinks"><a href="#software">Software</a><a href="#categories">Categories</a><a href="#about">About</a></div></nav>
 <section class="hero">
-  <div class="badge">THE EDITING SOFTWARE DIRECTORY</div>
+  <div class="badge"><span class="dot"></span> SMART EDITING SOFTWARE DIRECTORY</div>
   <h1>Find the right tool for <span class="grad">your next edit.</span></h1>
-  <p>Explore editing software by what it actually does best — video, colour, VFX, photos, 3D, audio and more.</p>
-  <div class="search"><input id="search" placeholder="Search software or what you want to do..."></div>
+  <p>Search, filter, compare and get smart recommendations for video, colour, VFX, photo, 3D, audio and social content.</p>
+  <div class="ai-box">
+    <div class="ai-title">✦ <span>SMART SOFTWARE FINDER</span></div>
+    <textarea id="aiPrompt" placeholder="Tell me what you want to create... Example: I want a cinematic YouTube video with strong colour grading and cool effects."></textarea>
+    <div class="ai-row"><button class="primary" id="aiButton">Find my software →</button><button class="secondary" id="clearAI">Clear</button></div>
+    <div class="examples"><button class="example">Gaming video with lots of effects</button><button class="example">Free cinematic colour grading</button><button class="example">Make Instagram videos quickly</button></div>
+    <div class="ai-results" id="aiResults"></div>
+  </div>
 </section>
-
-<div class="filters" id="categories">
-  <button class="filter active" data-filter="all">All</button>
-  <button class="filter" data-filter="video">🎬 Video</button>
-  <button class="filter" data-filter="color">🎨 Colour</button>
-  <button class="filter" data-filter="vfx">✨ VFX</button>
-  <button class="filter" data-filter="photo">🖼️ Photo</button>
-  <button class="filter" data-filter="3d">🧊 3D</button>
-  <button class="filter" data-filter="audio">🎵 Audio</button>
-  <button class="filter" data-filter="social">📱 Social</button>
-</div>
-
+<div class="filters-wrap" id="categories"><div class="filters" id="filters"></div></div>
 <main id="software">
-  <div class="sectionhead"><h2>Explore software</h2><div class="count" id="count"></div></div>
+  <div class="toolbar"><div><div class="sectionhead"><h2>Explore software</h2></div><div class="count" id="count"></div></div><div class="controls"><button class="compare-btn" id="compareBtn">Compare selected</button><select class="select" id="sort"><option value="recommended">Recommended</option><option value="rating">Highest rated</option><option value="name">Name A–Z</option><option value="free">Free first</option></select></div></div>
   <div class="grid" id="grid"></div>
+  <div class="about" id="about"><strong>About EditHub</strong><br><br>EditHub is a directory concept that helps you choose editing software based on what you actually need. The recommendation system on this page is a client-side smart matching engine, so it works without exposing an API key. A real cloud AI model would require a secure backend/API connection.</div>
 </main>
-
-<footer class="footer" id="about">EditHub is a directory concept. Software names and trademarks belong to their respective owners.</footer>
-
+<footer class="footer">EditHub is a directory concept. Software names and trademarks belong to their respective owners.</footer>
+<div class="modal" id="modal"><div class="modal-card"><div class="modal-top"><h2>Software comparison</h2><button class="close" id="closeModal">Close</button></div><div class="compare-grid" id="compareGrid"></div></div></div>
 <script>
 const apps=[
-{name:"DaVinci Resolve",icon:"🎞️",type:"Video • Colour • VFX • Audio",desc:"A professional all-in-one editor with especially strong colour grading and finishing tools.",cats:["video","color","vfx","audio"],tags:["Professional","Free version","Desktop"],rating:"★★★★★  5.0",url:"https://www.blackmagicdesign.com/products/davinciresolve/"},
-{name:"Adobe Premiere Pro",icon:"▶️",type:"Video Editing",desc:"A professional timeline editor for cutting, effects, audio, captions and complete video projects.",cats:["video"],tags:["Professional","AI tools","Desktop"],rating:"★★★★★  4.8",url:"https://www.adobe.com/products/premiere.html"},
-{name:"Final Cut Pro",icon:"🎬",type:"Video • Colour • Audio",desc:"Apple's professional video editor for Mac and iPad, with editing, audio, motion and colour tools.",cats:["video","color","audio"],tags:["Mac / iPad","Professional"],rating:"★★★★★  4.8",url:"https://www.apple.com/final-cut-pro/"},
-{name:"CapCut",icon:"✂️",type:"Video • Photo • Social",desc:"A quick editor focused on creating videos and visual content for social platforms.",cats:["video","photo","social"],tags:["Easy","Social","AI tools"],rating:"★★★★☆  4.5",url:"https://www.capcut.com/"},
-{name:"Adobe Photoshop",icon:"Ps",type:"Photo • Design",desc:"Advanced image editing, compositing, retouching and creative design with AI-powered tools.",cats:["photo"],tags:["Professional","AI tools","Desktop / Web"],rating:"★★★★★  4.9",url:"https://www.adobe.com/products/photoshop.html"},
-{name:"Blender",icon:"🌀",type:"3D • Animation • VFX",desc:"Free, open-source 3D software for modelling, animation, simulation, rendering and more.",cats:["3d","vfx"],tags:["Free","Open Source","3D"],rating:"★★★★★  4.9",url:"https://www.blender.org/"},
-{name:"Canva",icon:"C",type:"Design • Photo • Video • Social",desc:"An accessible visual design platform for social posts, videos, presentations, graphics and more.",cats:["photo","video","social"],tags:["Easy","Free plan","Web"],rating:"★★★★☆  4.5",url:"https://www.canva.com/"},
-{name:"Audacity",icon:"🎙️",type:"Audio Editing",desc:"Free, open-source software for recording and editing audio.",cats:["audio"],tags:["Free","Open Source","Desktop"],rating:"★★★★☆  4.4",url:"https://www.audacityteam.org/"},
-{name:"Adobe After Effects",icon:"Ae",type:"Motion Graphics • VFX",desc:"A professional tool for motion graphics, compositing, animation and visual effects.",cats:["vfx"],tags:["Professional","Motion","Desktop"],rating:"★★★★★  4.8",url:"https://www.adobe.com/products/aftereffects.html"}
+{name:"DaVinci Resolve",icon:"🎞️",type:"Video • Colour • VFX • Audio",desc:"Professional all-in-one editing with outstanding colour grading, effects, audio and finishing tools.",cats:["video","color","vfx","audio"],tags:["Professional","Free version","Desktop"],rating:5.0,free:true,url:"https://www.blackmagicdesign.com/products/davinciresolve/",scores:{video:5,color:5,vfx:4,audio:4,free:5,pro:5}},
+{name:"Adobe Premiere Pro",icon:"▶️",type:"Video Editing • Audio",desc:"Professional timeline editing for complete video projects, captions, effects, audio and more.",cats:["video","audio"],tags:["Professional","AI tools","Desktop"],rating:4.8,free:false,url:"https://www.adobe.com/products/premiere.html",scores:{video:5,color:4,vfx:3,audio:4,pro:5}},
+{name:"Final Cut Pro",icon:"🎬",type:"Video • Colour • Audio",desc:"Fast professional editing for Mac and iPad with strong colour, audio and creative tools.",cats:["video","color","audio"],tags:["Mac / iPad","Professional"],rating:4.8,free:false,url:"https://www.apple.com/final-cut-pro/",scores:{video:5,color:4,audio:4,easy:4,pro:5}},
+{name:"CapCut",icon:"✂️",type:"Video • Photo • Social",desc:"Quick editing for short-form videos and social content with an easy workflow and creative effects.",cats:["video","photo","social"],tags:["Easy","Social","AI tools"],rating:4.5,free:true,url:"https://www.capcut.com/",scores:{video:4,social:5,photo:3,easy:5,free:4}},
+{name:"Adobe Photoshop",icon:"Ps",type:"Photo • Design",desc:"Advanced image editing, compositing, retouching and creative design with powerful AI features.",cats:["photo","social"],tags:["Professional","AI tools","Desktop / Web"],rating:4.9,free:false,url:"https://www.adobe.com/products/photoshop.html",scores:{photo:5,social:3,easy:2,pro:5}},
+{name:"Blender",icon:"🌀",type:"3D • Animation • VFX",desc:"Free open-source 3D software for modelling, animation, simulation, rendering and visual effects.",cats:["3d","vfx"],tags:["Free","Open Source","3D"],rating:4.9,free:true,url:"https://www.blender.org/",scores:{vfx:5,"3d":5,free:5,pro:4}},
+{name:"Canva",icon:"C",type:"Design • Photo • Video • Social",desc:"Accessible visual design for social posts, videos, thumbnails, presentations and graphics.",cats:["photo","video","social"],tags:["Easy","Free plan","Web"],rating:4.5,free:true,url:"https://www.canva.com/",scores:{photo:4,social:5,video:3,easy:5,free:4}},
+{name:"Audacity",icon:"🎙️",type:"Audio Editing",desc:"Free open-source software for recording, editing and cleaning up audio.",cats:["audio"],tags:["Free","Open Source","Desktop"],rating:4.4,free:true,url:"https://www.audacityteam.org/",scores:{audio:5,free:5,easy:4}},
+{name:"Adobe After Effects",icon:"Ae",type:"Motion Graphics • VFX",desc:"Professional motion graphics, compositing, animation and visual effects for video projects.",cats:["vfx","video"],tags:["Professional","Motion","Desktop"],rating:4.8,free:false,url:"https://www.adobe.com/products/aftereffects.html",scores:{vfx:5,video:3,pro:5}},
+{name:"GIMP",icon:"G",type:"Photo • Design",desc:"Free open-source image editor for retouching, compositing and graphic design.",cats:["photo"],tags:["Free","Open Source","Desktop"],rating:4.3,free:true,url:"https://www.gimp.org/",scores:{photo:5,free:5,easy:3}},
+{name:"VEGAS Pro",icon:"V",type:"Video • Audio",desc:"Professional video editing with timeline tools, effects, audio and colour workflows.",cats:["video","audio","color"],tags:["Professional","Desktop"],rating:4.5,free:false,url:"https://www.vegascreativesoftware.com/",scores:{video:5,audio:4,color:4,pro:5}},
+{name:"Kdenlive",icon:"K",type:"Video Editing",desc:"Free open-source non-linear video editor with multi-track editing and effects.",cats:["video"],tags:["Free","Open Source","Desktop"],rating:4.4,free:true,url:"https://kdenlive.org/",scores:{video:4,free:5,easy:3}},
+{name:"OBS Studio",icon:"◉",type:"Recording • Streaming",desc:"Free open-source software for recording and live streaming gameplay, tutorials and other video content.",cats:["video","social"],tags:["Free","Open Source","Streaming"],rating:4.6,free:true,url:"https://obsproject.com/",scores:{video:4,social:4,free:5,easy:4}},
+{name:"Cinema 4D",icon:"C4",type:"3D • Motion Graphics",desc:"Professional 3D modelling, animation and motion graphics software for creative work.",cats:["3d","vfx"],tags:["Professional","3D","Motion"],rating:4.7,free:false,url:"https://www.maxon.net/en/cinema-4d",scores:{"3d":5,vfx:4,pro:5}},
+{name:"Lightroom",icon:"Lr",type:"Photo • Colour",desc:"Photo organisation and editing with strong colour, exposure and image enhancement controls.",cats:["photo","color"],tags:["Photography","Colour","Desktop / Mobile"],rating:4.7,free:false,url:"https://www.adobe.com/products/photoshop-lightroom.html",scores:{photo:5,color:5,easy:4,pro:4}}
 ];
-
-const grid=document.getElementById("grid"), search=document.getElementById("search"), count=document.getElementById("count");
-let active="all";
-function render(){
- const q=search.value.toLowerCase();
- const shown=apps.filter(a=>(active==="all"||a.cats.includes(active)) && (a.name.toLowerCase().includes(q)||a.type.toLowerCase().includes(q)||a.desc.toLowerCase().includes(q)||a.tags.join(" ").toLowerCase().includes(q)));
- count.textContent=shown.length+" tools";
- grid.innerHTML=shown.length?shown.map(a=>`
- <article class="card">
-  <div class="icon">${a.icon}</div><h3>${a.name}</h3><div class="type">${a.type}</div><p>${a.desc}</p>
-  <div class="tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
-  <div class="rating">${a.rating}</div>
-  <div class="buttons"><a class="btn" href="${a.url}" target="_blank" rel="noopener">Official site ↗</a></div>
- </article>`).join(""):`<div class="empty" style="display:block">No software found. Try another search or category.</div>`;
-}
-document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");active=b.dataset.filter;render()});
-search.oninput=render; render();
+const categoryData=[['all','✦ All'],['video','🎬 Video'],['color','🎨 Colour'],['vfx','✨ VFX'],['photo','🖼️ Photo'],['3d','🧊 3D'],['audio','🎵 Audio'],['social','📱 Social']];
+const filters=document.getElementById('filters'); categoryData.forEach(([id,label],i)=>{const b=document.createElement('button');b.className='filter'+(i===0?' active':'');b.dataset.filter=id;b.textContent=label;filters.appendChild(b)});
+const grid=document.getElementById('grid'),count=document.getElementById('count'),sort=document.getElementById('sort');let active='all',query='',selected=new Set();
+function stars(r){return '★★★★★'.split('').map((s,i)=>i<Math.round(r)?s:'☆').join('')}
+function render(){let shown=apps.filter(a=>(active==='all'||a.cats.includes(active))&&((a.name+' '+a.type+' '+a.desc+' '+a.tags.join(' ')).toLowerCase().includes(query)));if(sort.value==='rating')shown.sort((a,b)=>b.rating-a.rating);if(sort.value==='name')shown.sort((a,b)=>a.name.localeCompare(b.name));if(sort.value==='free')shown.sort((a,b)=>Number(b.free)-Number(a.free)||b.rating-a.rating);count.textContent=shown.length+' tools';grid.innerHTML=shown.length?shown.map(a=>`<article class="card"><div class="icon">${a.icon}</div><h3>${a.name}</h3><div class="type">${a.type}</div><p>${a.desc}</p><div class="tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="rating">${stars(a.rating)} <span class="rating-num">${a.rating.toFixed(1)}</span></div><div class="card-actions"><a class="btn" href="${a.url}" target="_blank" rel="noopener">Official site ↗</a><button class="check ${selected.has(a.name)?'selected':''}" data-select="${a.name}" title="Select for comparison">✓</button></div></article>`).join(''):`<div class="empty">No software found. Try another search, category or sort option.</div>`;document.querySelectorAll('[data-select]').forEach(b=>b.onclick=()=>{const n=b.dataset.select;selected.has(n)?selected.delete(n):selected.add(n);render()});document.getElementById('compareBtn').classList.toggle('show',selected.size>=2)}
+filters.addEventListener('click',e=>{if(!e.target.classList.contains('filter'))return;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');active=e.target.dataset.filter;render()});
+const searchBox=document.createElement('input');searchBox.type='search';searchBox.placeholder='Search software...';searchBox.style.cssText='position:absolute;left:-9999px';document.body.appendChild(searchBox);
+const aiPrompt=document.getElementById('aiPrompt');
+function smartRecommend(text){const t=text.toLowerCase();const signals={video:['video','film','movie','youtube','edit','editing','clip','footage','montage','gaming','gameplay','short'],color:['colour','color','grading','grade','cinematic','lut','look','tone','exposure','skin'],vfx:['vfx','visual effect','effects','effect','green screen','compositing','motion graphics','motion','animation'],photo:['photo','photograph','picture','image','retouch','photoshop','thumbnail','poster','graphic','design'],"3d":['3d','three dimensional','model','modelling','modeling','render','blender','character'],audio:['audio','sound','music','voice','podcast','mix','recording'],social:['instagram','tiktok','shorts','social media','reel','reels','viral','content'],free:['free','no money','without paying','budget'],easy:['easy','simple','beginner','quick','quickly','easy to use'],pro:['professional','pro','advanced','studio','high quality']};let weights={};for(const [k,words] of Object.entries(signals))weights[k]=words.reduce((s,w)=>s+(t.includes(w)?1:0),0);if(!Object.values(weights).some(Boolean)){weights.video=1;weights.easy=1}let ranked=apps.map(a=>{let raw=0,max=0;for(const [k,v] of Object.entries(a.scores)){if(weights[k]){raw+=weights[k]*v;max+=weights[k]*5}}let textMatch=(a.name.toLowerCase().includes(t)?2:0);return {...a,score:raw+textMatch,max:max||5}}).sort((a,b)=>(b.score/b.max)-(a.score/a.max)||b.rating-a.rating);return ranked.slice(0,3).map((a,i)=>({...a,pct:Math.max(60,Math.min(99,Math.round((a.score/a.max)*100)-i*2))}))}
+function runAI(){const text=aiPrompt.value.trim();if(!text){aiPrompt.focus();return}const results=smartRecommend(text),box=document.getElementById('aiResults');box.innerHTML='<div style="font-size:12px;color:#aeb4c4;margin-bottom:5px">Based on your request, these are the strongest matches:</div>'+results.map(a=>`<div class="ai-result"><div class="ai-icon">${a.icon}</div><div class="ai-info"><b>${a.name}</b><small>${a.type}</small></div><span class="match">${a.pct}% match</span><a class="mini-link" href="${a.url}" target="_blank" rel="noopener">Open ↗</a></div>`).join('');box.classList.add('show')}
+document.getElementById('aiButton').onclick=runAI;aiPrompt.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')runAI()});document.getElementById('clearAI').onclick=()=>{aiPrompt.value='';document.getElementById('aiResults').classList.remove('show')};document.querySelectorAll('.example').forEach(b=>b.onclick=()=>{aiPrompt.value=b.textContent;runAI()});
+sort.onchange=render;
+// Keyboard shortcut: / focuses the smart finder
+window.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement.tagName!=='TEXTAREA'&&document.activeElement.tagName!=='INPUT'){e.preventDefault();aiPrompt.focus()}});
+const modal=document.getElementById('modal');document.getElementById('compareBtn').onclick=()=>{const items=apps.filter(a=>selected.has(a.name));document.getElementById('compareGrid').innerHTML=items.map(a=>`<div class="compare-item"><h3>${a.icon} ${a.name}</h3><p>${a.desc}</p><div class="compare-stat"><span>Rating</span><b>${a.rating}/5</b></div><div class="compare-stat"><span>Free option</span><b>${a.free?'Yes':'No'}</b></div><div class="compare-stat"><span>Categories</span><b>${a.cats.join(', ')}</b></div><div style="margin-top:12px"><a class="mini-link" href="${a.url}" target="_blank" rel="noopener">Official site ↗</a></div></div>`).join('');modal.classList.add('open')};document.getElementById('closeModal').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+render();
 </script>
 </body>
 </html>
